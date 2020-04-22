@@ -5,6 +5,7 @@
   "main": "src/app.js",
   "dependencies": {
     "micro": "^9.3.4",
+    "micro-cors": "^0.1.1",
     "ytdl-core": "^2.1.0"
   },
   "devDependencies": {},

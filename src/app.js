@@ -1,6 +1,8 @@
 const { send } = require("micro");
 const ytdl_C = require("ytdl-core");
 const { promisify } = require("util");
+const microCors = require("micro-cors");
+const cors = microCors({ allowMethods: ["GET"] });
 
 const getInfo = promisify(ytdl_C.getInfo);
 
@@ -38,13 +40,16 @@ const getData = async ({ method, url }) => {
   return await getInfoOfVideo(videoID);
 };
 
-module.exports = async (req, res) => {
+const handler = async (req, res) => {
   if (req.url === "/favicon.ico") return send(res, 200, "");
 
   try {
     const data = await getData(req);
+    res.setHeader("Access-Control-Allow-Origin", "*");
     return send(res, 200, { error: false, msg: "Video Info", data });
   } catch (error) {
     return send(res, 400, { error: true, msg: error.message });
   }
 };
+
+module.exports = cors(handler);
