@@ -15,7 +15,11 @@
     "type": "git",
     "url": "git+https://github.com/fearless23/Youtube-Downloader.git"
   },
-  "author": "",
+  "author": {
+    "email": "jaspreetsingh2379@gmail.com",
+    "name": "Jaspreet Singh",
+    "url": "https://github.com/fearless23"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/fearless23/Youtube-Downloader/issues"
