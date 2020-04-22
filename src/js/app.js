@@ -5,18 +5,29 @@ const input = document.getElementById("ytubeInput");
 const btn = document.getElementById("ytubeInputBtn");
 const video = document.getElementById("video");
 
+
+const showYoutubeEmbed = (videoID) => {
+  const l = video.children.length;
+  for (let i = 0; i < l; i++) {
+    video.removeChild(video.children[i]);
+  }
+  video.appendChild(makeYoutubeEmbed(videoID));
+};
+
 btn.addEventListener("click", async () => {
   try {
-    const videoID = checkValidUrl(input.value);
-    const l = video.children.length;
-    for (let i = 0; i < l; i++) {
-      video.removeChild(video.children[i]);
+    const url = input.value;
+    input.value = "";
+
+    let videoID = url;
+    if (url.length > 10) {
+      videoID = checkValidUrl(videoID);
     }
-    video.appendChild(makeYoutubeEmbed(videoID));
+
+    showYoutubeEmbed(videoID);
 
     const data = await getVideoIDInfo(videoID);
-    console.log(data);
-    video.appendChild(createInfoContainer(data));
+    createInfoContainer(data);
   } catch (error) {
     console.log("err", error.message);
   }
