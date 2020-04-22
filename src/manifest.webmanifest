@@ -5,7 +5,7 @@
   "background_color": "#2196f3",
   "display": "standalone",
   "orientation": "portrait",
-  "scope": "/",
+  "scope": "https://downloadyoutube.netlify.app/",
   "start_url": "/index.html",
   "icons": [
     {
