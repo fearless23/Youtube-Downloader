@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel src/index.html",
-    "build": "rm -rf dist && parcel build  --no-source-maps src/index.html",
+    "clean": "rimraf dist",
+    "serve:parcel": "parcel src/index.html",
+    "build:parcel": "parcel build  --no-source-maps src/index.html",
+    "start": "npm run clean && npm run serve:parcel",
+    "build": "npm run clean && npm run build:parcel",
     "help": "parcel build --help"
   },
   "repository": {
@@ -22,7 +25,8 @@
     "@babel/core": "^7.9.0",
     "@babel/plugin-transform-runtime": "^7.9.0",
     "babel-polyfill": "^6.26.0",
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
     "@babel/runtime-corejs2": "^7.9.2",
